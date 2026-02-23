@@ -31,7 +31,10 @@ export default function Cart({ cart, removeItem, clearCart }: Props) {
     }
 
     const orderList = cart
-      .map(item => `- ${item.name} x${item.qty}`)
+      .map(item => {
+        const subtotal = (item.price * item.qty).toLocaleString("id-ID")
+        return `- ${item.name} x${item.qty} — Rp ${subtotal}`
+      })
       .join("\n")
 
     const message = `Nama: ${customerName}
